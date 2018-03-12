@@ -3,7 +3,7 @@ Use robocopy for Dentrix and Dexis backup
 
 
 ---
-
+robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
 ---
 
