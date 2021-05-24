@@ -8,13 +8,17 @@ robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
 ## Parameters
 
-<Source>                Specifies the path to the source directory.
+<Source>                
+Specifies the path to the source directory.
 
-<Destination>           Specifies the path to the destination directory.
+<Destination>           
+Specifies the path to the destination directory.
 
-<File>                  Specifies the file or files to be copied. You can use wildcard characters (* or ?), if you want. If the File parameter is not specified, *.* is used as the default value.
+<File>                  
+Specifies the file or files to be copied. You can use wildcard characters (* or ?), if you want. If the File parameter is not specified, *.* is used as the default value.
 
-<Options>               Specifies options to be used with the robocopy command.
+<Options>               
+Specifies options to be used with the robocopy command.
 
 ## Copy options
 /s                      Copies subdirectories. Note that this option excludes empty directories.
