@@ -1,1 +1,2 @@
 @REM Becuase the markup escape characters do not permit the use of layout of robocopy's syntax, I have put it here.
+robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
