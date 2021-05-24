@@ -3,10 +3,10 @@ Use robocopy for Dentrix and Dexis backup
 
 robocopy is batch command for copying file data. Unfortunately, I'm not sure what the original source is for the comments below but I tried to clean it up.
 
-# Syntax
+## Syntax
 robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
-#Parameters
+## Parameters
 
 <Source>                Specifies the path to the source directory.
 
@@ -16,7 +16,7 @@ robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
 <Options>               Specifies options to be used with the robocopy command.
 
-#Copy options
+## Copy options
 /s                      Copies subdirectories. Note that this option excludes empty directories.
 
 /e                      Copies subdirectories. Note that this option includes empty directories. For additional information, see Remarks.
@@ -109,7 +109,7 @@ When using the /SECFIX copy option, specify the type of security information you
 
 /SEC
 
-#File selection options
+## File selection options
 /a                      Copies only files for which the Archive attribute is set.
 
 /m                      Copies only files for which the Archive attribute is set, and resets the Archive attribute.
@@ -222,14 +222,14 @@ Retry options
 
 /if                     Includes the specified files.
 
-#Remarks
+## Remarks
 The /mir option is equivalent to the /e plus /purge options with one small difference in behavior:
 
 With the /e plus /purge options, if the destination directory exists, the destination directory security settings are not overwritten.
 
 With the /mir option, if the destination directory exists, the destination directory security settings are overwritten.
 
-#Resources
+## Resources
 https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy
 
 https://www.sevenforums.com/tutorials/187346-robocopy-create-backup-script.html#:~:text=The%20easiest%20way%20to%20use%20the%20ROBOCOPY%20command,up%20a%20new%20blank%20Notepad%20document.%20Step%202
