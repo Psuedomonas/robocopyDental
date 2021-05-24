@@ -6,7 +6,7 @@ robocopy is batch command for copying file data. Unfortunately, I'm not sure wha
 #Syntax
 robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
-$Parameters
+#Parameters
 
 <Source>                Specifies the path to the source directory.
 
