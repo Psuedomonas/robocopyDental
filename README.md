@@ -5,8 +5,7 @@ robocopy is batch command for copying file data. Unfortunately, I'm not sure wha
 
 ## Syntax
 
-Unfortunately the escape character system for githubs .md files obfunscates the syntax, so try looking at the readme source.
-robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
+Unfortunately the escape character system for githubs .md files obfunscates the syntax, so look at example for syntax.
 
 ## Parameters
 
