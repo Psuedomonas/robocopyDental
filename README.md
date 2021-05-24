@@ -9,16 +9,16 @@ Unfortunately the escape character system for githubs .md files obfunscates the 
 
 ## Parameters
 
-<Source>
+Source
 Specifies the path to the source directory.
 
-<Destination>
+Destination
 Specifies the path to the destination directory.
 
-<File>
+File
 Specifies the file or files to be copied. You can use wildcard characters (* or ?), if you want. If the File parameter is not specified, *.* is used as the default value.
 
-<Options>
+Options
 Specifies options to be used with the robocopy command.
 
 ## Copy options
