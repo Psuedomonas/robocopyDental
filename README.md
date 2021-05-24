@@ -3,7 +3,7 @@ Use robocopy for Dentrix and Dexis backup
 
 robocopy is batch command for copying file data. Unfortunately, I'm not sure what the original source is for the comments below but I tried to clean it up.
 
-#Syntax
+# Syntax
 robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
 #Parameters
