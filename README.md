@@ -1,186 +1,105 @@
 # robocopyDental
 Use robocopy for Dentrix and Dexis backup
 
+robocopy is batch command for copying file data. Unfortunately, I'm not sure what the original source is for the comments below but I tried to clean it up.
 
----
+#Syntax
 robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
 
----
+$Parameters
 
-Robocopy
-6 minutes to read
-Updated: April 17, 2012
+<Source>                Specifies the path to the source directory.
 
-Applies To: Windows 7, Windows Server 2008, Windows Server 2008 R2
+<Destination>           Specifies the path to the destination directory.
 
-Copies file data.
+<File>                  Specifies the file or files to be copied. You can use wildcard characters (* or ?), if you want. If the File parameter is not specified, *.* is used as the default value.
 
-Syntax
-robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
-Parameters
-Parameter	Description
-<Source>
+<Options>               Specifies options to be used with the robocopy command.
 
-Specifies the path to the source directory.
+#Copy options
+/s                      Copies subdirectories. Note that this option excludes empty directories.
 
-<Destination>
+/e                      Copies subdirectories. Note that this option includes empty directories. For additional information, see Remarks.
 
-Specifies the path to the destination directory.
+/lev:<N>                Copies only the top N levels of the source directory tree.
 
-<File>
+/z                      Copies files in Restart mode.
 
-Specifies the file or files to be copied. You can use wildcard characters (* or ?), if you want. If the File parameter is not specified, *.* is used as the default value.
+/b                      Copies files in Backup mode.
 
-<Options>
+/zb                     Uses Restart mode. If access is denied, this option uses Backup mode.
 
-Specifies options to be used with the robocopy command.
+/efsraw                 Copies all encrypted files in EFS RAW mode.
 
-Copy options
-Option	Description
-/s
+/copy:<CopyFlags>       Specifies the file properties to be copied. The following are the valid values for this option:
 
-Copies subdirectories. Note that this option excludes empty directories.
+        D Data
 
-/e
+        A Attributes
 
-Copies subdirectories. Note that this option includes empty directories. For additional information, see Remarks.
+        T Time stamps
 
-/lev:<N>
+        S NTFS access control list (ACL)
 
-Copies only the top N levels of the source directory tree.
+        O Owner information
 
-/z
+        U Auditing information
 
-Copies files in Restart mode.
+        The default value for CopyFlags is DAT (data, attributes, and time stamps).
 
-/b
+/dcopy:T                Copies directory time stamps.
 
-Copies files in Backup mode.
+/sec                    Copies files with security (equivalent to /copy:DAT).
 
-/zb
+/copyall                Copies all file information (equivalent to /copy:DATSOU).
 
-Uses Restart mode. If access is denied, this option uses Backup mode.
+/nocopy                 Copies no file information (useful with /purge).
 
-/efsraw
+/secfix                 Fixes file security on all files, even skipped ones.
 
-Copies all encrypted files in EFS RAW mode.
+/timfix                 Fixes file times on all files, even skipped ones.
 
-/copy:<CopyFlags>
+/purge                  Deletes destination files and directories that no longer exist in the source. For additional information, see Remarks.
 
-Specifies the file properties to be copied. The following are the valid values for this option:
+/mir                    Mirrors a directory tree (equivalent to /e plus /purge). For additional information, see Remarks.
 
-D Data
+/mov                    Moves files, and deletes them from the source after they are copied.
 
-A Attributes
+/move                   Moves files and directories, and deletes them from the source after they are copied.
 
-T Time stamps
+/a+:[RASHCNET]          Adds the specified attributes to copied files.
 
-S NTFS access control list (ACL)
+/a-:[RASHCNET]          Removes the specified attributes from copied files.
 
-O Owner information
+/create                 Creates a directory tree and zero-length files only.
 
-U Auditing information
+/fat                    Creates destination files by using 8.3 character-length FAT file names only.
 
-The default value for CopyFlags is DAT (data, attributes, and time stamps).
+/256                    Turns off support for very long paths (longer than 256 characters).
 
-/dcopy:T
+/mon:<N>                Monitors the source, and runs again when more than N changes are detected.
 
-Copies directory time stamps.
+/mot:<M>                Monitors source, and runs again in M minutes if changes are detected.
 
-/sec
+/MT[:N]                 Creates multi-threaded copies with N threads. N must be an integer between 1 and 128. The default value for N is 8.
 
-Copies files with security (equivalent to /copy:DAT).
+          The /MT parameter cannot be used with the /IPG and /EFSRAW parameters.
+          Redirect output using /LOG option for better performance.
 
-/copyall
+          Note
+          The /MT parameter applies to Windows Server 2008 R2 and Windows 7.
 
-Copies all file information (equivalent to /copy:DATSOU).
+/rh:hhmm-hhmm           Specifies run times when new copies may be started.
 
-/nocopy
+/pf                     Checks run times on a per-file (not per-pass) basis.
 
-Copies no file information (useful with /purge).
+/ipg:n                  Specifies the inter-packet gap to free bandwidth on slow lines.
 
-/secfix
-
-Fixes file security on all files, even skipped ones.
-
-/timfix
-
-Fixes file times on all files, even skipped ones.
-
-/purge
-
-Deletes destination files and directories that no longer exist in the source. For additional information, see Remarks.
-
-/mir
-
-Mirrors a directory tree (equivalent to /e plus /purge). For additional information, see Remarks.
-
-/mov
-
-Moves files, and deletes them from the source after they are copied.
-
-/move
-
-Moves files and directories, and deletes them from the source after they are copied.
-
-/a+:[RASHCNET]
-
-Adds the specified attributes to copied files.
-
-/a-:[RASHCNET]
-
-Removes the specified attributes from copied files.
-
-/create
-
-Creates a directory tree and zero-length files only.
-
-/fat
-
-Creates destination files by using 8.3 character-length FAT file names only.
-
-/256
-
-Turns off support for very long paths (longer than 256 characters).
-
-/mon:<N>
-
-Monitors the source, and runs again when more than N changes are detected.
-
-/mot:<M>
-
-Monitors source, and runs again in M minutes if changes are detected.
-
-/MT[:N]
-
-Creates multi-threaded copies with N threads. N must be an integer between 1 and 128. The default value for N is 8.
-
-The /MT parameter cannot be used with the /IPG and /EFSRAW parameters.
-
-Redirect output using /LOG option for better performance.
-
-Note
-The /MT parameter applies to Windows Server 2008 R2 and Windows 7.
-/rh:hhmm-hhmm
-
-Specifies run times when new copies may be started.
-
-/pf
-
-Checks run times on a per-file (not per-pass) basis.
-
-/ipg:n
-
-Specifies the inter-packet gap to free bandwidth on slow lines.
-
-/sl
-
-Copies the symbolic link instead of the target.
+/sl                     Copies the symbolic link instead of the target.
 
 Important
-
 When using the /SECFIX copy option, specify the type of security information you want to copy by also using one of these additional copy options: 
-/COPYALL
+/COPYALL                
 
 /COPY:O
 
@@ -190,233 +109,127 @@ When using the /SECFIX copy option, specify the type of security information you
 
 /SEC
 
-File selection options
-Option	Description
-/a
+#File selection options
+/a                      Copies only files for which the Archive attribute is set.
 
-Copies only files for which the Archive attribute is set.
+/m                      Copies only files for which the Archive attribute is set, and resets the Archive attribute.
 
-/m
+/ia:[RASHCNETO]         Includes only files for which any of the specified attributes are set.
 
-Copies only files for which the Archive attribute is set, and resets the Archive attribute.
+/xa:[RASHCNETO]         Excludes files for which any of the specified attributes are set.
 
-/ia:[RASHCNETO]
+/xf <FileName>[ ...]    Excludes files that match the specified names or paths. Note that FileName can include wildcard characters (* and ?).
 
-Includes only files for which any of the specified attributes are set.
+/xd <Directory>[ ...]   Excludes directories that match the specified names and paths.
 
-/xa:[RASHCNETO]
+/xct                    Excludes changed files.
 
-Excludes files for which any of the specified attributes are set.
+/xn                     Excludes newer files.
 
-/xf <FileName>[ ...]
+/xo                     Excludes older files.
 
-Excludes files that match the specified names or paths. Note that FileName can include wildcard characters (* and ?).
+/xx                     Excludes extra files and directories.
 
-/xd <Directory>[ ...]
+/xl                     Excludes "lonely" files and directories.
 
-Excludes directories that match the specified names and paths.
+/is                     Includes the same files.
 
-/xct
+/it                     Includes "tweaked" files.
 
-Excludes changed files.
+/max:<N>                Specifies the maximum file size (to exclude files bigger than N bytes).
 
-/xn
+/min:<N>                Specifies the minimum file size (to exclude files smaller than N bytes).
 
-Excludes newer files.
+/maxage:<N>             Specifies the maximum file age (to exclude files older than N days or date).
 
-/xo
+/minage:<N>             Specifies the minimum file age (exclude files newer than N days or date).
 
-Excludes older files.
+/maxlad:<N>             Specifies the maximum last access date (excludes files unused since N).
 
-/xx
+/minlad:<N>             Specifies the minimum last access date (excludes files used since N) If N is less than 1900, N specifies the number of days. Otherwise, N specifies a date in the format YYYYMMDD.
 
-Excludes extra files and directories.
+/xj                     Excludes junction points, which are normally included by default.
 
-/xl
+/fft                    Assumes FAT file times (two-second precision).
 
-Excludes "lonely" files and directories.
+/dst                    Compensates for one-hour DST time differences.
 
-/is
+/xjd                    Excludes junction points for directories.
 
-Includes the same files.
-
-/it
-
-Includes "tweaked" files.
-
-/max:<N>
-
-Specifies the maximum file size (to exclude files bigger than N bytes).
-
-/min:<N>
-
-Specifies the minimum file size (to exclude files smaller than N bytes).
-
-/maxage:<N>
-
-Specifies the maximum file age (to exclude files older than N days or date).
-
-/minage:<N>
-
-Specifies the minimum file age (exclude files newer than N days or date).
-
-/maxlad:<N>
-
-Specifies the maximum last access date (excludes files unused since N).
-
-/minlad:<N>
-
-Specifies the minimum last access date (excludes files used since N) If N is less than 1900, N specifies the number of days. Otherwise, N specifies a date in the format YYYYMMDD.
-
-/xj
-
-Excludes junction points, which are normally included by default.
-
-/fft
-
-Assumes FAT file times (two-second precision).
-
-/dst
-
-Compensates for one-hour DST time differences.
-
-/xjd
-
-Excludes junction points for directories.
-
-/xjf
-
-Excludes junction points for files.
+/xjf                    Excludes junction points for files.
 
 Retry options
-Option	Description
-/r:<N>
+/r:<N>                  Specifies the number of retries on failed copies. The default value of N is 1,000,000 (one million retries).
 
-Specifies the number of retries on failed copies. The default value of N is 1,000,000 (one million retries).
+/w:<N>                  Specifies the wait time between retries, in seconds. The default value of N is 30 (wait time 30 seconds).
 
-/w:<N>
+/reg                    Saves the values specified in the /r and /w options as default settings in the registry.
 
-Specifies the wait time between retries, in seconds. The default value of N is 30 (wait time 30 seconds).
+/tbd                    Specifies that the system will wait for share names to be defined (retry error 67).
 
-/reg
+#Logging options
 
-Saves the values specified in the /r and /w options as default settings in the registry.
+/l                      Specifies that files are to be listed only (and not copied, deleted, or time stamped).
 
-/tbd
+/x                      Reports all extra files, not just those that are selected.
 
-Specifies that the system will wait for share names to be defined (retry error 67).
+/v                      Produces verbose output, and shows all skipped files.
 
-Logging options
-Option	Description
-/l
+/ts                     Includes source file time stamps in the output.
 
-Specifies that files are to be listed only (and not copied, deleted, or time stamped).
+/fp                     Includes the full path names of the files in the output.
 
-/x
+/bytes                  Prints sizes, as bytes.
 
-Reports all extra files, not just those that are selected.
+/ns                     Specifies that file sizes are not to be logged.
 
-/v
+/nc                     Specifies that file classes are not to be logged.
 
-Produces verbose output, and shows all skipped files.
+/nfl                    Specifies that file names are not to be logged.
 
-/ts
+/ndl                    Specifies that directory names are not to be logged.
 
-Includes source file time stamps in the output.
+/np                     Specifies that the progress of the copying operation (the number of files or directories copied so far) will not be displayed.
 
-/fp
+/eta                    Shows the estimated time of arrival (ETA) of the copied files.
 
-Includes the full path names of the files in the output.
+/log:<LogFile>          Writes the status output to the log file (overwrites the existing log file).
 
-/bytes
+/log+:<LogFile>         Writes the status output to the log file (appends the output to the existing log file).
 
-Prints sizes, as bytes.
+/unicode                Displays the status output as Unicode text.
 
-/ns
+/unilog:<LogFile>       Writes the status output to the log file as Unicode text (overwrites the existing log file).
 
-Specifies that file sizes are not to be logged.
+/unilog+:<LogFile>      Writes the status output to the log file as Unicode text (appends the output to the existing log file).
 
-/nc
+/tee                    Writes the status output to the console window, as well as to the log file.
 
-Specifies that file classes are not to be logged.
+/njh                    Specifies that there is no job header.
 
-/nfl
+/njs                    Specifies that there is no job summary.
 
-Specifies that file names are not to be logged.
+#Job options
+/job:<JobName>          Specifies that parameters are to be derived from the named job file.
 
-/ndl
+/save:<JobName>         Specifies that parameters are to be saved to the named job file.
 
-Specifies that directory names are not to be logged.
+/quit                   Quits after processing command line (to view parameters).
 
-/np
+/nosd                   Indicates that no source directory is specified.
 
-Specifies that the progress of the copying operation (the number of files or directories copied so far) will not be displayed.
+/nodd                   Indicates that no destination directory is specified.
 
-/eta
+/if                     Includes the specified files.
 
-Shows the estimated time of arrival (ETA) of the copied files.
-
-/log:<LogFile>
-
-Writes the status output to the log file (overwrites the existing log file).
-
-/log+:<LogFile>
-
-Writes the status output to the log file (appends the output to the existing log file).
-
-/unicode
-
-Displays the status output as Unicode text.
-
-/unilog:<LogFile>
-
-Writes the status output to the log file as Unicode text (overwrites the existing log file).
-
-/unilog+:<LogFile>
-
-Writes the status output to the log file as Unicode text (appends the output to the existing log file).
-
-/tee
-
-Writes the status output to the console window, as well as to the log file.
-
-/njh
-
-Specifies that there is no job header.
-
-/njs
-
-Specifies that there is no job summary.
-
-Job options
-Option	Description
-/job:<JobName>
-
-Specifies that parameters are to be derived from the named job file.
-
-/save:<JobName>
-
-Specifies that parameters are to be saved to the named job file.
-
-/quit
-
-Quits after processing command line (to view parameters).
-
-/nosd
-
-Indicates that no source directory is specified.
-
-/nodd
-
-Indicates that no destination directory is specified.
-
-/if
-
-Includes the specified files.
-
-Remarks
+#Remarks
 The /mir option is equivalent to the /e plus /purge options with one small difference in behavior:
 
 With the /e plus /purge options, if the destination directory exists, the destination directory security settings are not overwritten.
 
 With the /mir option, if the destination directory exists, the destination directory security settings are overwritten.
+
+#Resources
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy
+
+https://www.sevenforums.com/tutorials/187346-robocopy-create-backup-script.html#:~:text=The%20easiest%20way%20to%20use%20the%20ROBOCOPY%20command,up%20a%20new%20blank%20Notepad%20document.%20Step%202
